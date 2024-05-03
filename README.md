@@ -4,7 +4,7 @@ This repository includes the frontend for a Pokemon Tracker web application. The
 
 This application uses a React frontend (this respository) with a Node js backend (https://github.com/cocobird1/fsd_wdw2117_final_backend) and a MongoDB database. This application is hosted at https://fsd-wdw2117-final-frontend.vercel.app/pokemon.
 
-# Getting Started with Create React App
+# React Information
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
