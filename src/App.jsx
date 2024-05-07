@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import PokemonList from './PokemonList';
 import PokemonDetail from './PokemonDetail';
@@ -26,11 +26,12 @@ function App() {
             </Navbar>
             <Container>
                 <Routes>
+                    <Route path="/" element={<Navigate replace to="/home" />} />
                     <Route path="/pokemon" element={<PokemonList />} />
                     <Route path="/pokemon/:number" element={<PokemonDetail />} />
-                    <Route path="/quiz" element={<PokemonQuiz />} /> 
-                    <Route path="/home" element={<HomePage />} /> 
-                    <Route path="/team" element={<TeamBuilder />} /> 
+                    <Route path="/quiz" element={<PokemonQuiz />} />
+                    <Route path="/home" element={<HomePage />} />
+                    <Route path="/team" element={<TeamBuilder />} />
                 </Routes>
             </Container>
         </Router>
