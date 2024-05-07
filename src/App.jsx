@@ -6,6 +6,7 @@ import PokemonDetail from './PokemonDetail';
 import PokemonQuiz from './PokemonQuiz';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HomePage from './Homepage';
+import TeamBuilder from './TeamBuilder';
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                         <Nav className="me-auto">
                             <Nav.Link as={Link} to="/pokemon">Pokédex</Nav.Link>
                             <Nav.Link as={Link} to="/quiz">Pokémon Quiz</Nav.Link>
+                            <Nav.Link as={Link} to="/team">Pokémon Team Builder</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
@@ -28,6 +30,7 @@ function App() {
                     <Route path="/pokemon/:number" element={<PokemonDetail />} />
                     <Route path="/quiz" element={<PokemonQuiz />} /> 
                     <Route path="/home" element={<HomePage />} /> 
+                    <Route path="/team" element={<TeamBuilder />} /> 
                 </Routes>
             </Container>
         </Router>
