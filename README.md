@@ -1,8 +1,63 @@
 # Pokémon Tracker
 
-This repository includes the frontend for a Pokemon Tracker web application. The application allows users to learn about the statistics, name, and descriptions of all the original 151 Pokémon through a detailed Pokédex page for each Pokémon. Further, the application allows users to test their knowledge with a quiz with infinite questions. I've implemented a minimalistic but modern user interface that takes advantage of the cool GIFs of Pokémon available online. The dataset is from https://gist.github.com/santiagoolivar2017/0591a53c4dd34ecd8488660c7372b0e3 which is published on GitHub.
+### Video Demo: https://youtu.be/DlefJRcuZV0
+
+## Project Description
+
+Final project for COMS W3102.
+
+This repository includes the frontend for a Pokemon Tracker web application. The application allows users to learn about the statistics, name, and descriptions of all the original 151 Pokémon through a detailed Pokédex page for each Pokémon. Further, the application allows users to test their knowledge with a quiz with infinite questions. Lastly, it allows a user to build a team of 6 Pokémon, and analyze the team's strengths and weaknesses. I've implemented a minimalistic but modern user interface that takes advantage of the cool GIFs of Pokémon available online and Bootstrap. The dataset is from https://gist.github.com/santiagoolivar2017/0591a53c4dd34ecd8488660c7372b0e3 which is published on GitHub.
 
 This application uses a React frontend (this respository) with a Node js backend (https://github.com/cocobird1/fsd_wdw2117_final_backend) and a MongoDB database. This application is hosted at https://fsd-wdw2117-final-frontend.vercel.app/pokemon.
+
+## 📺 Preview
+
+<img src="https://github.com/shvam0000/Roommate-Tinder/blob/main/frontend/utils/images/1.png" alt="Roommate Tinder" height="500" width="1000">
+
+<img src="https://github.com/shvam0000/Roommate-Tinder/blob/main/frontend/utils/images/2.png" alt="Roommate Tinder" height="500" width="1000">
+
+## 📌 Prerequisites
+
+### 💻 System requirement :
+
+1. Any system with basic configuration.
+2. Operating System : Any (Windows / Linux / Mac).
+
+### 💿 Software requirement :
+
+1. Updated browser
+2. Node.js installed (If not download it [here](https://nodejs.org/en/download/)).
+3. Any text editor of your choice.
+
+## Installation 🔧
+
+### Client
+
+Client directory
+
+Install dependencies
+
+```
+$ yarn install
+```
+
+or
+
+```
+$ npm install
+```
+
+Start the website development server
+
+```
+$ yarn dev
+```
+
+or
+
+```
+$ npm dev
+```
 
 # React Information
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Button, Card } from 'react-bootstrap';
+import { Container, Row, Col, Button, Card, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 const typeColors = {
@@ -36,6 +36,8 @@ function TeamBuilder() {
     const [team, setTeam] = useState([]);
     const [strengths, setStrengths] = useState({});
     const [weaknesses, setWeaknesses] = useState({});
+    const [searchTerm, setSearchTerm] = useState('');
+    const [filteredPokemons, setFilteredPokemons] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -43,9 +45,19 @@ function TeamBuilder() {
             .then(response => response.json())
             .then(data => {
                 setAllPokemons(data);
+                setFilteredPokemons(data);
             })
             .catch(error => console.error('Error fetching Pokemon data:', error));
     }, []);
+
+    useEffect(() => {
+      const filtered = allPokemons.filter(pokemon =>
+          pokemon.Pokemon.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          (pokemon.Type1 && pokemon.Type1.toLowerCase().includes(searchTerm.toLowerCase())) ||
+          (pokemon.Type2 && pokemon.Type2.toLowerCase().includes(searchTerm.toLowerCase()))
+      );
+      setFilteredPokemons(filtered);
+    }, [searchTerm, allPokemons]);  
 
     useEffect(() => {
         if (team.length > 0) {
@@ -103,29 +115,36 @@ function TeamBuilder() {
         <Container>
             <Row>
                 <Col md={8}>
-                    <h2 style={{ marginTop: '20px' }}>Select Pokémon for Your Team</h2>
-                    <Row xs={1} md={2} lg={4} className="g-4">
-                        {allPokemons.map(pokemon => (
-                            <Col key={pokemon.id}>
-                                <Card className="h-100">
-                                    <Card.Img variant="top" src={pokemon.PNG} style={{ height: '160px', objectFit: 'cover' }} />
-                                    <Card.Body>
-                                        <Card.Title>{pokemon.Pokemon}</Card.Title>
-                                        <Button variant="primary" onClick={() => addToTeam(pokemon)}>
-                                            Add to Team
-                                        </Button>
-                                        <Button 
-                                            variant="info" 
-                                            style={{ marginTop: '10px' }} 
-                                            onClick={() => navigate(`/pokemon/${pokemon.Number}`)}>
-                                            View Details
-                                        </Button>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                        ))}
-                    </Row>
-                </Col>
+                        <h2 style={{ marginTop: '20px' }}>Select Pokémon for Your Team</h2>
+                        <Form.Control
+                            type="text"
+                            placeholder="Search by name or type"
+                            value={searchTerm}
+                            onChange={e => setSearchTerm(e.target.value)}
+                            style={{ marginBottom: '20px' }}
+                        />
+                        <Row xs={1} md={2} lg={4} className="g-4">
+                            {filteredPokemons.map(pokemon => (
+                                <Col key={pokemon.id}>
+                                    <Card className="h-100">
+                                        <Card.Img variant="top" src={pokemon.PNG} style={{ height: '160px', objectFit: 'cover' }} />
+                                        <Card.Body>
+                                            <Card.Title>{pokemon.Pokemon}</Card.Title>
+                                            <Button variant="primary" onClick={() => addToTeam(pokemon)}>
+                                                Add to Team
+                                            </Button>
+                                            <Button 
+                                                variant="info" 
+                                                style={{ marginTop: '10px' }} 
+                                                onClick={() => navigate(`/pokemon/${pokemon.Number}`)}>
+                                                View Details
+                                            </Button>
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
+                            ))}
+                        </Row>
+                    </Col>
                 <Col md={4}>
                       <h2 style={{ marginTop: '20px' }}>Your Team</h2>
                       {team.length > 0 ? (
