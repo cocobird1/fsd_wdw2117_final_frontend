@@ -131,7 +131,7 @@ function TeamBuilder() {
                       {team.length > 0 ? (
                           team.map(pokemon => (
                               <Card key={pokemon.id} className="mb-3">
-                                  <Card.Img variant="top" src={pokemon.PNG} style={{ height: '160px', objectFit: 'cover' }} />
+                                  <Card.Img variant="top" src={pokemon.GIF} style={{ width: '100%', maxHeight: '150px', objectFit: 'contain', marginTop: '20px'}} />
                                   <Card.Body>
                                       <Card.Title>{pokemon.Pokemon}</Card.Title>
                                       <Button variant="danger" onClick={() => removeFromTeam(pokemon)}>
